@@ -167,7 +167,9 @@
           <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:0.4rem">Send Us a Message</h3>
           <p style="font-size:0.85rem;color:var(--muted);margin-bottom:2rem">We'll respond within 24 business hours.</p>
 
-          <form id="contactForm" novalidate>
+          <form id="contactForm" action="send-email.php" method="POST" novalidate>
+            <!-- Honeypot -->
+            <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
             <div class="form-row">
               <div class="form-group">
                 <label for="fullName">Full Name *</label>

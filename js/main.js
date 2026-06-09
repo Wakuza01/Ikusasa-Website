@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ---- CONTACT FORM ----
   const form = document.getElementById('contactForm');
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const name    = form.fullName.value.trim();
@@ -131,21 +131,47 @@ document.addEventListener('DOMContentLoaded', () => {
       const message = form.message.value.trim();
       const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-      if (name.length < 2) {
-        showToast('Please enter your full name.', 'error');
-        return;
-      }
-      if (!emailRx.test(email)) {
-        showToast('Please enter a valid email address.', 'error');
-        return;
-      }
-      if (message.length < 10) {
-        showToast('Please enter a message (at least 10 characters).', 'error');
-        return;
+      if (name.length < 2) { showToast('Please enter your full name.', 'error'); return; }
+      if (!emailRx.test(email)) { showToast('Please enter a valid email address.', 'error'); return; }
+      if (message.length < 10) { showToast('Please enter a message (at least 10 characters).', 'error'); return; }
+
+      const submitBtn = form.querySelector('.btn-submit');
+      const originalHTML = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.7';
+      submitBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation:spin 1s linear infinite"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> Sending...';
+
+      // Add spin keyframe once
+      if (!document.getElementById('spin-style')) {
+        const s = document.createElement('style');
+        s.id = 'spin-style';
+        s.textContent = '@keyframes spin { to { transform: rotate(360deg); } }';
+        document.head.appendChild(s);
       }
 
-      showToast("Message sent! We'll be in touch within 24 hours.", 'success');
-      form.reset();
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          submitBtn.innerHTML = originalHTML;
+          setTimeout(() => { window.location.href = 'thank-you.html'; }, 400);
+        } else {
+          showToast(data.message || 'Something went wrong. Please try again.', 'error');
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = '1';
+          submitBtn.innerHTML = originalHTML;
+        }
+      } catch (err) {
+        showToast('Could not connect. Please call us on 083 293 2025.', 'error');
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = '1';
+        submitBtn.innerHTML = originalHTML;
+      }
     });
   }
 
