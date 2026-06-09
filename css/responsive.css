@@ -1,0 +1,95 @@
+/* ==============================
+   RESPONSIVE STYLES
+============================== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .service-detail {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .service-detail.reverse .service-detail-info { order: unset; }
+  .service-detail.reverse .service-detail-card { order: unset; }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: rgba(17, 17, 17, 0.97);
+    backdrop-filter: blur(16px);
+    flex-direction: column;
+    padding: 1.5rem 1.5rem 2rem;
+    border-bottom: 1px solid var(--border);
+    gap: 0.25rem;
+    z-index: 999;
+  }
+
+  .nav-links.open { display: flex; }
+
+  .nav-links a {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+
+  .nav-cta { display: none; }
+  .mobile-menu-btn { display: flex; }
+
+  .hero { padding: 7rem 1.5rem 5rem; }
+  .hero-actions { flex-direction: column; align-items: center; }
+
+  .page-hero { padding: 8rem 1.5rem 4rem; }
+
+  .section { padding: 4rem 1.5rem; }
+
+  .services-grid { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .process-grid { grid-template-columns: 1fr; }
+  .contact-info-grid { grid-template-columns: 1fr; }
+
+  .form-row { grid-template-columns: 1fr; }
+  .contact-form-wrap { padding: 1.75rem; }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cta-actions { flex-direction: column; align-items: center; }
+  .cta-inner { padding: 4rem 1.5rem; }
+
+  .service-detail { padding: 2.5rem 0; }
+
+  /* About story grid */
+  .section-inner[style*="grid-template-columns:1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .stat-number { font-size: 2.2rem; }
+  .btn { padding: 0.75rem 1.4rem; font-size: 0.875rem; }
+}
