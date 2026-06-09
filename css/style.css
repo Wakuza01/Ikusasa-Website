@@ -9,9 +9,9 @@
   --border: #2a2a2a;
   --text: #e8e8e8;
   --muted: #888888;
-  --accent: #f1c40f;
-  --accent-dim: rgba(241, 196, 15, 0.12);
-  --accent-glow: rgba(241, 196, 15, 0.25);
+  --accent: #E8731A;
+  --accent-dim: rgba(232, 115, 26, 0.12);
+  --accent-glow: rgba(232, 115, 26, 0.28);
   --radius: 12px;
   --radius-lg: 20px;
   --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -870,7 +870,7 @@ nav {
 
 .form-group select {
   cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23888888' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.85rem center;
   padding-right: 2.5rem;
