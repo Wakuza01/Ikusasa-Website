@@ -143,7 +143,16 @@ nav {
 }
 
 .mobile-menu-btn:hover { background: var(--card); }
-.mobile-menu-btn svg { display: block; }
+.mobile-menu-btn svg {
+  display: block;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+.mobile-menu-btn svg.icon-close {
+  position: absolute;
+}
+.mobile-menu-btn {
+  position: relative;
+}
 
 /* ==============================
    HERO SECTION
